@@ -1,0 +1,9 @@
+bin
+obj
+packages
+*.nupkg
+*.zip
+tools
+
+
+.vs

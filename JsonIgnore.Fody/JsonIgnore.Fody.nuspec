@@ -1,0 +1,26 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata minClientVersion="2.8">
+    <id>JsonIgnore.Fody</id>
+    <version>$version$</version>
+    <title>JsonIgnore.Fody</title>
+    <authors>wk</authors>
+    <owners>wk</owners>
+    <developmentDependency>true</developmentDependency>
+    <licenseUrl>https://github.com/wk-j/json-ignore-fody</licenseUrl>
+    <projectUrl>https://github.com/wk-j/json-ignore-fody</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <iconUrl>https://raw.github.com/wk-j/json-ignore-fody/master/Icons/package_icon.png</iconUrl>
+    <description>Add JsonIgnore attribute</description>
+    <summary />
+    <language>en-AU</language>
+    <tags>ILWeaving, Fody, Cecil, JsonIgnore</tags>
+    <dependencies>
+      <dependency id="Fody"/>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\JsonIgnore.Fody.dll" target=""/>
+    <file src="tools\*.*" target="tools" />
+  </files>
+</package>
