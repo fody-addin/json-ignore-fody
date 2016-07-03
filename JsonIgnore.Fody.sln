@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyToProcess", "Assemb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonIgnore.Fody.Tests", "JsonIgnore.Fody.Tests\JsonIgnore.Fody.Tests.csproj", "{DFA0F6F6-413B-4CB8-A56D-BE012D21AFF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonIgnore.Fody.Consumer", "JsonIgnore.Fody.Consumer\JsonIgnore.Fody.Consumer.csproj", "{4F74EF91-9792-447B-B03C-0C26E93C6088}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{DFA0F6F6-413B-4CB8-A56D-BE012D21AFF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFA0F6F6-413B-4CB8-A56D-BE012D21AFF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFA0F6F6-413B-4CB8-A56D-BE012D21AFF2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4F74EF91-9792-447B-B03C-0C26E93C6088}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4F74EF91-9792-447B-B03C-0C26E93C6088}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4F74EF91-9792-447B-B03C-0C26E93C6088}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4F74EF91-9792-447B-B03C-0C26E93C6088}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
