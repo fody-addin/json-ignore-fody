@@ -18,7 +18,7 @@ namespace JsonIgnore.Fody.Tests
             var moduleDefinition = ModuleDefinition.ReadModule(target);
             var weaver = new ModuleWeaver {
                 ModuleDefinition = moduleDefinition,
-                DllPath = "Newtonsoft.Json.dll"
+                ProjectDirectoryPath = "../../"
             };
             weaver.Execute();
             moduleDefinition.Write(output);

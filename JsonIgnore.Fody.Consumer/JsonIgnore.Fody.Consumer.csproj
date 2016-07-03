@@ -32,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="JsonIgnore.Fody, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\JsonIgnore.Fody.0.1.1\lib\net45\JsonIgnore.Fody.dll</HintPath>
+    <Reference Include="JsonIgnore.Fody, Version=0.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\JsonIgnore.Fody.0.1.4\lib\net45\JsonIgnore.Fody.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">

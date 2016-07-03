@@ -1,5 +1,6 @@
 ﻿using Mono.Cecil;
 using System;
+using System.IO;
 using System.Linq;
 
 namespace JsonIgnore.Fody
@@ -12,8 +13,12 @@ namespace JsonIgnore.Fody
         // An instance of Mono.Cecil.ModuleDefinition for processing
         public ModuleDefinition ModuleDefinition { get; set; }
 
+        public string ProjectDirectoryPath { get; set; }
 
-        public string DllPath { set;get;}
+        private string JsonPath()
+        {
+            return Path.Combine(ProjectDirectoryPath, @"bin\Debug\Newtonsoft.Json.dll");
+        }
 
         public void Execute()
         {
@@ -26,7 +31,7 @@ namespace JsonIgnore.Fody
 
         public void AddAttribute(ModuleDefinition module)
         {
-            var json = AssemblyDefinition.ReadAssembly(DllPath); 
+            var json = AssemblyDefinition.ReadAssembly(JsonPath()); 
             var attr = json.MainModule.GetType("Newtonsoft.Json.JsonIgnoreAttribute");
             var ctor = attr.Methods.First(x => x.IsConstructor);
             var ctorReference = module.ImportReference(ctor);
