@@ -1,5 +1,5 @@
 ## JsonIgnore.Fody
 
-## Install
+### Install
 
 > Install-Package JsonIgnore.Fody
