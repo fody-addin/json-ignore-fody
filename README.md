@@ -1,6 +1,6 @@
-## JsonIgnore.Fody
+### JsonIgnore.Fody
 
-Add `[JsonIgnore]` if property name start with 'Q'.
+Add `[JsonIgnore]` if property name start with `Q`.
 
 ### Install
 
