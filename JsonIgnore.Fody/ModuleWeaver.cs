@@ -23,26 +23,33 @@ namespace JsonIgnore.Fody
 
         public void Execute()
         {
+            // AddHello(ModuleDefinition);
+            AddAttribute(ModuleDefinition);
+        }
+
+        public void AddHello(ModuleDefinition module)
+        {
             var ts = ModuleDefinition.TypeSystem;
             var newType = new TypeDefinition(null, "Hello", TypeAttributes.Public, ts.Object);
-            ModuleDefinition.Types.Add(newType);
-
-            AddAttribute(ModuleDefinition);
+            module.Types.Add(newType);
         }
 
         public void AddAttribute(ModuleDefinition module)
         {
+            var ignoreName = "Newtonsoft.Json.JsonIgnoreAttribute";
             var json = AssemblyDefinition.ReadAssembly(JsonPath());
-            var attr = json.MainModule.GetType("Newtonsoft.Json.JsonIgnoreAttribute");
+            var attr = json.MainModule.GetType(ignoreName);
             var ctor = attr.Methods.First(x => x.IsConstructor);
             var ctorReference = module.ImportReference(ctor);
 
             module.Types.ToList().ForEach(type =>
             {
-                var targetProperites = type.Properties.Where(p => p.Name.StartsWith("Q"));
-                targetProperites.ToList().ForEach(property =>
+                var targetProperties = type.Properties.Where(p => p.Name.StartsWith("Q"));
+                targetProperties.ToList().ForEach(property =>
                 {
-                    property.CustomAttributes.Add(new CustomAttribute(ctorReference));
+                    var exist = property.CustomAttributes.FirstOrDefault(a => a.AttributeType.FullName == ignoreName);
+                    if (exist == null)
+                        property.CustomAttributes.Add(new CustomAttribute(ctorReference));
                 });
             });
         }

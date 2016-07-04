@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,9 @@ namespace AssemblyToProcess
     {
         public string Name { set; get; }
         public float Pga { set; get; }
-        public object QReference { set; get; }
+
+        [JsonIgnore]
+        public object QReferenceA { set; get; }
+        public object QReferenceB { set; get; }
     }
 }
