@@ -7,17 +7,18 @@ namespace JsonIgnore.Fody
 {
     public class ModuleWeaver
     {
-        // Will log an informational message to MSBuild
         public Action<string> LogInfo { get; set; }
 
-        // An instance of Mono.Cecil.ModuleDefinition for processing
         public ModuleDefinition ModuleDefinition { get; set; }
 
-        public string ProjectDirectoryPath { get; set; }
+        public string SolutionDirectoryPath { get; set; }
 
         private string JsonPath()
         {
-            return Path.Combine(ProjectDirectoryPath, @"bin\Debug\Newtonsoft.Json.dll");
+            var packages = Path.Combine(SolutionDirectoryPath, "packages");
+            var jsonDir = new DirectoryInfo(packages).GetDirectories("Newtonsoft.Json.*").LastOrDefault().FullName;
+
+            return Path.Combine(jsonDir, @"lib\net45\Newtonsoft.Json.dll");
         }
 
         public void Execute()
@@ -31,14 +32,16 @@ namespace JsonIgnore.Fody
 
         public void AddAttribute(ModuleDefinition module)
         {
-            var json = AssemblyDefinition.ReadAssembly(JsonPath()); 
+            var json = AssemblyDefinition.ReadAssembly(JsonPath());
             var attr = json.MainModule.GetType("Newtonsoft.Json.JsonIgnoreAttribute");
             var ctor = attr.Methods.First(x => x.IsConstructor);
             var ctorReference = module.ImportReference(ctor);
 
-            module.Types.ToList().ForEach(type => {
+            module.Types.ToList().ForEach(type =>
+            {
                 var targetProperites = type.Properties.Where(p => p.Name.StartsWith("Q"));
-                targetProperites.ToList().ForEach(property => {
+                targetProperites.ToList().ForEach(property =>
+                {
                     property.CustomAttributes.Add(new CustomAttribute(ctorReference));
                 });
             });
