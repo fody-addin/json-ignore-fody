@@ -49,7 +49,12 @@ namespace JsonIgnore.Fody
                 {
                     var exist = property.CustomAttributes.FirstOrDefault(a => a.AttributeType.FullName == ignoreName);
                     if (exist == null)
-                        property.CustomAttributes.Add(new CustomAttribute(ctorReference));
+                    {
+                        if (property.PropertyType.FullName != "System.Int32")
+                        {
+                            property.CustomAttributes.Add(new CustomAttribute(ctorReference));
+                        }
+                    }
                 });
             });
         }

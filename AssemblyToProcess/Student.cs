@@ -15,5 +15,8 @@ namespace AssemblyToProcess
         [JsonIgnore]
         public object QReferenceA { set; get; }
         public object QReferenceB { set; get; }
+
+        public int QReferenceAId { set; get; }
+        public int QReferneceBId { set; get; }
     }
 }
