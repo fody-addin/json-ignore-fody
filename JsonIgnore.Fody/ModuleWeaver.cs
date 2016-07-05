@@ -80,6 +80,13 @@ namespace JsonIgnore.Fody
             var ctor = attr.Methods.First(x => x.IsConstructor);
             var ctorReference = module.ImportReference(ctor);
 
+            var exlucdes = new[] {
+                 "System.Int32",
+                 "System.String",
+                 "System.DateTime"
+            }.ToList();
+
+
             module.Types.ToList().ForEach(type =>
             {
                 var targetProperties = type.Properties.Where(p => p.Name.StartsWith("Q"));
@@ -88,7 +95,8 @@ namespace JsonIgnore.Fody
                     var exist = property.CustomAttributes.FirstOrDefault(a => a.AttributeType.FullName == ignoreName);
                     if (exist == null)
                     {
-                        if (property.PropertyType.FullName != "System.Int32")
+                        var fullName = property.PropertyType.FullName;
+                        if (!exlucdes.Contains(fullName))
                         {
                             property.CustomAttributes.Add(new CustomAttribute(ctorReference));
                         }
