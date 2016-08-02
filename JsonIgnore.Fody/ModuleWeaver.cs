@@ -89,7 +89,7 @@ namespace JsonIgnore.Fody
 
             module.Types.ToList().ForEach(type =>
             {
-                var targetProperties = type.Properties.Where(p => p.Name.StartsWith("Q"));
+                var targetProperties = type.Properties.Where(p => p.Name.StartsWith("Q") && Char.IsUpper(p.Name.ElementAt(1)));
                 targetProperties.ToList().ForEach(property =>
                 {
                     var exist = property.CustomAttributes.FirstOrDefault(a => a.AttributeType.FullName == ignoreName);

@@ -4,6 +4,7 @@ packages
 *.nupkg
 *.zip
 tools
+*~
 
 
 .vs
